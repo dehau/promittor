@@ -1,0 +1,2 @@
+# promittor
+promises facing events
