@@ -1,0 +1,23 @@
+{
+  "name": "promittor-es5",
+  "version": "0.0.1",
+  "description": "promises facing events",
+  "main": "Promittor-UMD.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dehau/promittor.git"
+  },
+  "keywords": [
+    "Promise",
+    "promises",
+    "events",
+    "eventEmitter",
+    "ES5"
+  ],
+  "author": "dehau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dehau/promittor/issues"
+  },
+  "homepage": "https://github.com/dehau/promittor#readme"
+}

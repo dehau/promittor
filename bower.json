@@ -1,0 +1,29 @@
+{
+  "name": "promittor",
+  "description": "promises facing events",
+  "main": "es5/Promittor-UMD.js",
+  "authors": [
+    "dehau"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Promise"
+    "promises",
+    "events",
+    "eventEmitter",
+    "ES2015"
+  ],
+  "homepage": "https://github.com/dehau/promittor",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node",
+    "es6"
+  ],
+  "ignore": [
+    "/*",
+    "/*/",
+    "!/es5/",
+    "!/lib/",
+  ]
+}
