@@ -7,7 +7,7 @@
   ],
   "license": "MIT",
   "keywords": [
-    "Promise"
+    "Promise",
     "promises",
     "events",
     "eventEmitter",
@@ -24,6 +24,6 @@
     "/*",
     "/*/",
     "!/es5/",
-    "!/lib/",
+    "!/lib/"
   ]
 }
