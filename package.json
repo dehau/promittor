@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "babel lib/Promittor.js -o es5/Promittor-UMD.js",
     "prepublish": "cd es5 && npm publish",
-    "preversion": "npm run compile",
+    "preversion": "npm run compile && git add es5",
     "version": "cd es5 && npm --no-git-tag-version version $npm_package_version && git add .",
     "postversion": "git push --follow-tags"
   },
