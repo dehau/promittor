@@ -1,6 +1,6 @@
 {
   "name": "promittor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "promises facing events",
   "main": "lib/Promittor.js",
   "scripts": {
