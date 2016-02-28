@@ -48,11 +48,13 @@
   var LISTENERS = Symbol('listeners');
   var PROMISE = Symbol('promise');
 
-  var PromittorClass = function () {
-    function PromittorClass(buildFn) {
+  var Promittor = function () {
+    function Promittor() {
       var _this = this;
 
-      _classCallCheck(this, PromittorClass);
+      var buildFn = arguments.length <= 0 || arguments[0] === undefined ? function () {} : arguments[0];
+
+      _classCallCheck(this, Promittor);
 
       this[LISTENERS] = {};
       this[PROMISE] = new Promise(function (res, rej) {
@@ -60,7 +62,7 @@
       });
     }
 
-    _createClass(PromittorClass, [{
+    _createClass(Promittor, [{
       key: 'then',
       value: function then(success, error) {
         this[PROMISE] = this[PROMISE].then(success, error);
@@ -119,23 +121,18 @@
         return this.off(event, cb);
       }
     }], [{
+      key: 'create',
+      value: function create(buildFn) {
+        return new Promittor(buildFn);
+      }
+    }, {
       key: 'resolve',
-      value: function (_resolve) {
-        function resolve(_x, _x2) {
-          return _resolve.apply(this, arguments);
-        }
-
-        resolve.toString = function () {
-          return _resolve.toString();
-        };
-
-        return resolve;
-      }(function (value, eventsBuilder) {
-        return new Promittor(resolve, reject, function (self) {
+      value: function resolve(value, eventsBuilder) {
+        return new Promittor(_resolve, reject, function (self) {
           eventsBuilder(self);
-          resolve(value);
+          _resolve(value);
         });
-      })
+      }
     }, {
       key: 'reject',
       value: function reject(value, eventsBuilder) {
@@ -143,17 +140,12 @@
       }
     }]);
 
-    return PromittorClass;
+    return Promittor;
   }();
 
-  function Promittor() {
-    var buildFn = arguments.length <= 0 || arguments[0] === undefined ? function () {} : arguments[0];
-
-    return new PromittorClass(buildFn);
-  }
-  Promittor.resolve = PromittorClass.resolve;
-  Promittor.reject = PromittorClass.reject;
-
   exports.default = Promittor;
-  var create = exports.create = Promittor;
+  var create = exports.create = Promittor.create;
+  var _resolve = Promittor.resolve;
+  exports.resolve = _resolve;
+  var reject = exports.reject = Promittor.reject;
 });
