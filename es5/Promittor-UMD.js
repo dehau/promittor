@@ -65,14 +65,14 @@
     _createClass(Promittor, [{
       key: 'then',
       value: function then(success, error) {
-        this[PROMISE] = this[PROMISE].then(success, error);
-        return this;
+        var promittor = Promittor.resolve(this[PROMISE].then(success, error));
+        promittor[LISTENERS] = this[LISTENERS];
+        return promittor;
       }
     }, {
       key: 'catch',
       value: function _catch(error) {
-        this[PROMISE] = this[PROMISE].then(null, error);
-        return this;
+        return this.then(null, error);
       }
     }, {
       key: 'on',
@@ -127,16 +127,15 @@
       }
     }, {
       key: 'resolve',
-      value: function resolve(value, eventsBuilder) {
-        return new Promittor(_resolve, reject, function (self) {
-          eventsBuilder(self);
-          _resolve(value);
+      value: function resolve(value) {
+        return new Promittor(function (resolve) {
+          return resolve(value);
         });
       }
     }, {
       key: 'reject',
-      value: function reject(value, eventsBuilder) {
-        return Promittor.resolve(Promise.reject(value), eventsBuilder);
+      value: function reject(value) {
+        return Promittor.resolve(Promise.reject(value));
       }
     }]);
 
@@ -145,7 +144,6 @@
 
   exports.default = Promittor;
   var create = exports.create = Promittor.create;
-  var _resolve = Promittor.resolve;
-  exports.resolve = _resolve;
+  var resolve = exports.resolve = Promittor.resolve;
   var reject = exports.reject = Promittor.reject;
 });
